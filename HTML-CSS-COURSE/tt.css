@@ -1,0 +1,31 @@
+body{
+  font-family: Arial;
+}
+table{
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+th,td{
+  border: 1px solid black;
+  padding:8px;
+  text-align: center;
+}
+th{
+  background-color: gray;
+}
+.elective-hour{
+  background-color: green;
+}
+.lab-hour{
+  background-color: brown;
+}
+.highlight{
+  background-color: aqua;
+}
+tr:nth-child(even) { 
+  background-color: #f9f9f9; 
+} 
+tr:nth-child(odd) { 
+  background-color: #e6f7ff; 
+} 
