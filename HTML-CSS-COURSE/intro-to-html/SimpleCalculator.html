@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>simplecalculator</title>
+  <style>
+  
+
+  body { 
+            font-family: 'Arial', sans-serif; 
+            display:flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+            margin: 0;
+          } 
+ 
+        .calculator { 
+            background: #fff; 
+            padding: 20px; 
+            border-radius: 12px; 
+            width: 320px; 
+            text-align: center; 
+        }
+        h1{
+          font-size: 24px; 
+            padding: 10px; 
+        } 
+        input,
+        select,
+        button{
+          width: 100%;
+          padding: 12px;  
+          margin:10px;
+          font-size: 16px; 
+          box-sizing: border-box;
+        }
+        #operation { 
+            cursor: pointer; 
+        }
+        option { 
+       background-color: #fff; 
+       color: #000; 
+       padding: 10px; 
+       border: none; 
+      }
+        
+        </style>
+  </head>
+<body>
+  <div class="calculator">
+    <h1>simple calculator</h1>
+    <form id="calculator-form">
+      <input type="number" id="num1" placeholder="Enter first number" required>
+      <input type="number" id="num2" placeholder="Enter second number" required>
+      <select id="operation" required>
+        <option value="">Select operation</option>
+        <option value="Sum">sum</option>
+        <option value="product">product</option>
+        <option value="difference">difference</option>
+        <option value="remainder">remainder</option>
+        <option value="qutiont">qutiont</option>
+        <option value="square root">square root</option>
+        <option value="square">square</option>
+      </select>
+      <button type="button" onclick="calculate()">calculate</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script>
+    function calculate(){
+      const num1=parseFloat(document.getElementById('num1').value);
+      const num2=parseFloat(document.getElementById('num2').value);
+      const operation=document.getElementById('operation').value;
+      let result='';
+      let resultClass='success';
+
+      if(isNAN(num1) || isNaN(num2)){
+        result='please Enter valid number';
+        resultClass='error';
+      }
+      else{
+        switch(operation){
+          case 'sum':
+            result='sum:${num1+num2}';
+            break;
+          case 'product':
+            result='product:${num1*num2}';
+            break;
+            case 'difference':
+              result='difference:${num1-num2}';
+              break;
+            case 'remainder':
+              result='remainder:${num1%num2}';
+              break;
+            case 'quotient':
+             result='qutiont:${num1/num2}';
+             break;
+            case 'power':
+              result='power:${math.pow(num1,num2)}';
+              break;
+            case 'sqrt':
+             if(num1<0 || num2<0){
+              resultClass='square root cannot be defined for negative number';
+              resultClass='error';
+             }
+             else{
+              result='square root of ${num1}:${math.sqrt(num1)}<br>square root of${num2}:${math.sqrt(num2)}';
+            }
+            break;
+          case'square':
+           result='square of ${num1}:${math.pow(num1,2)}<br>square of ${num2}:${math.pow(num 2,2)}';
+          break;
+        default:
+          result='please select an operation';
+          resultClass='error';
+       }
+        }
+        const resultDiv=document.getElementById('result');
+        resultDiv.innerHTML=result;
+        resultClass.classList.remove('show','error','success');
+        resultClass.classList.add(resultClass,'show');
+    }
+
+     </script>
+</body>
+</html>

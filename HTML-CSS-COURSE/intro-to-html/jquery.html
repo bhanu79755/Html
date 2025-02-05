@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jquery example</title>
+    <style>
+      body{
+
+      }
+
+    </style>
+    </head>
+    <body>
+      <div class="container">
+        <p id="paragraph">this is an existing paragraph</p>
+        <ul id="list">
+          <li>List 1</li>
+          <li>List 2</li>
+        </ul>
+        <div class="box" id="box">Animate me</div>
+        <button id="append button">Append button</button>
+        <button id="animate button">Animate button</button>
+      </div>
+      <script>
+        $(document).ready(function(){
+          $("#animatebutton").click(function(){
+          $("#paragraph").append("Appendedtext");
+          $("#list").append("<li>new appended list item</li>");
+      })
+      $("#animatebutton").click(function(){
+        $("#box").stop(true,true).css({
+          width:"100px",
+          height:"100px",
+          opacity:1,
+          backgroundcolor:"blue"
+        })
+        .animate({
+          width:"200px",
+          height:"200px",
+          opacity:0.5,
+        },1000,function(){
+          $(this).css("background-color","green");
+        });
+      });
+    });
+      </script>
+    </body>
+
+</html>
